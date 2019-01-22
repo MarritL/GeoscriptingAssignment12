@@ -3,12 +3,11 @@
 # Authors: Anne-Juul Welsink and Marrit Leenstra
 # Date: 22-01-2019
 
-def createBoundingBox():
+def createBoundingBox(x, y):
     """create bounding box around point location
     
-    :GDF: GeoDataFrame with features 
-    return: bbox: bounding box (xmin, ymin, xmax, ymax)
+    :x: x-coordinate
+    :y: y-coordinate
+    return: bounding box (xmin, ymin, xmax, ymax)
     """
-    GDF_polygon = GDF.unary_union.envelope
-    bbox = GDF_polygon.bounds
-    return bbox
+    return (x-500, y-500, x+500, y+500)
