@@ -22,4 +22,4 @@ def writeGeotiffToFile(raster, directory, filename, kwargs):
     
     # write to specified file
     with rasterio.open(dirFile, 'w', **kwargs) as file:
-    file.write(rasterFile.astype(rasterio.float32))
+        file.write(rasterFile.astype(rasterio.float32))

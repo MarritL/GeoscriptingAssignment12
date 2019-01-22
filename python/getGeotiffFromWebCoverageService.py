@@ -26,7 +26,7 @@ def getGeotiffFromWebCoverageService(url, version, bbox, identifier, frmt, direc
   
     dirFile = direc + filename + ".tif"
     
-    response = wcs.getCoverage(identifier=identifier, bbox=bbox, frmt=frmt,
+    response = wcs.getCoverage(identifier=identifier, bbox=bbox, format=frmt,
                            crs='urn:ogc:def:crs:EPSG::28992', resx=0.5, resy=0.5)
     with open(dirFile, 'wb') as file:
         file.write(response.read())
