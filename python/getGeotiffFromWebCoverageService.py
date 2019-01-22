@@ -17,19 +17,21 @@ def getGeotiffFromWebCoverageService(url, version, bbox, identifier, frmt, direc
     :directory: folder in which file is to be written
     :filename: filename of file to write
     """
-    wcs = WebCoverageService(url, version=version)
-    
+  
+    # create path
     direc = "./" + directory + "/"
+    dirFile = direc + filename + ".tif"
     
+    # check if directory and file exist
     if not os.path.exists(direc):
         os.makedirs(direc)
   
-    dirFile = direc + filename + ".tif"
-    
-    response = wcs.getCoverage(identifier=identifier, bbox=bbox, format=frmt,
+    if not os.path.isfile(dirFile):
+        wcs = WebCoverageService(url, version=version)
+        response = wcs.getCoverage(identifier=identifier, bbox=bbox, format=frmt,
                            crs='urn:ogc:def:crs:EPSG::28992', resx=0.5, resy=0.5)
-    with open(dirFile, 'wb') as file:
-        file.write(response.read())
+        with open(dirFile, 'wb') as file:
+            file.write(response.read())
         
     
 
