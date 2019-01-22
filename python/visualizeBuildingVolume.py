@@ -3,11 +3,11 @@
 # Authors: Anne-Juul Welsink and Marrit Leenstra
 # Date: 22-01-2019
 
-import folium
+import matplotlib.pyplot as plt
 
 def visualizeBuildingVolume(location):
     """Visualize 
     
     """
-    locationMap = 
-    
+    locationMap = folium.Map([location.latitude, location.longitude], zoom_start=15)
+    locationMap
