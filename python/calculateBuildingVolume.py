@@ -6,7 +6,7 @@
 import rasterstats as rs
 import geopandas as gpd
 
-def calculateBuildingVolume(buildings, tifFile):
+def calculateBuildingVolume(buildings, tifFile, inputdirectory):
     """ Calculate the volume of buildings in area of interest
     
     :buildings: polygon file of buildings
@@ -14,10 +14,12 @@ def calculateBuildingVolume(buildings, tifFile):
     return: volume
     """
     
-    buildingHeight = rs.zonal_stats(buildings, tifFile, stats = "mean" geojson_out=True)
-    buildingHeightGDF = gpd.GeoDataFrame.from_features(buildingHeight)
+    filepath = "./" + inputdirectory + "/" + tifFile
     
-    volume = buildingHeightGDF * buildings.area
+    buildingHeight = rs.zonal_stats(buildings, filepath, prefix = 'BH_', geojson_out=True)
+    buildingsHeightGDF = gpd.GeoDataFrame.from_features(buildingHeight)
+    
+    volume = buildingsHeightGDF['BH_mean'] * buildings.area
     
     return volume
     
