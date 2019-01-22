@@ -19,7 +19,7 @@ def getDataFromWebFeatureService(url, version, bbox, typename):
     :returns: GDF: geodataframe with requested data
     """
     MapWFS = WebFeatureService(url=url, version = version)
-    response = MapWFS.getfeature(typename=typename, bbox=bbox, maxfeatures=100, 
+    response = MapWFS.getfeature(typename=typename, bbox=bbox, maxfeatures=1000, 
                                  outputFormat='json', startindex=0)
     data = json.loads(response.read())
     GDF = gpd.GeoDataFrame.from_features(data['features'])

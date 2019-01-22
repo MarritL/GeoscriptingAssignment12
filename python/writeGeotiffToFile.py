@@ -18,8 +18,8 @@ def writeGeotiffToFile(raster, directory, filename, kwargs):
     direc = "./" + directory + "/"
     dirFile = direc + filename + ".tif"
     if not os.path.exists(direc):
-        os.mkdirs(direc)
+        os.makedirs(direc)
     
     # write to specified file
     with rasterio.open(dirFile, 'w', **kwargs) as file:
-        file.write(rasterFile.astype(rasterio.float32))
+        file.write(raster.astype(rasterio.float32))

@@ -3,7 +3,11 @@
 # Authors: Anne-Juul Welsink and Marrit Leenstra
 # Date: 22-01-2019
 
-def visualizeBuildingVolume():
-    """
+import folium
+
+def visualizeBuildingVolume(location):
+    """Visualize 
     
     """
+    locationMap = 
+    
